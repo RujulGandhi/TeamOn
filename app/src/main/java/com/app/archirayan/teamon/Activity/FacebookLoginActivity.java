@@ -32,7 +32,9 @@ import java.util.Map;
 
 import static com.app.archirayan.teamon.Utils.Constant.DEVICETYPE;
 
-//facebook archirayan15@gmail.com
+//facebook archirayan15@gmail.com archirayan15
+//Google analytic
+
 
 public class FacebookLoginActivity extends AppCompatActivity {
 
@@ -47,7 +49,6 @@ public class FacebookLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_facebook_login);
 
