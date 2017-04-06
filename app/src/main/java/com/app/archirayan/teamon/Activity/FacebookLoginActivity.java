@@ -34,7 +34,7 @@ import static com.app.archirayan.teamon.Utils.Constant.DEVICETYPE;
 
 //facebook archirayan15@gmail.com archirayan15
 //Google analytic
-// sanjya
+
 
 public class FacebookLoginActivity extends AppCompatActivity {
 
