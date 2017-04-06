@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_next_splash_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/graytextcolor"
+        android:text="SKIP"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_group" />
+
+
+        <TextView
+            android:id="@+id/fragment_splash2_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Join To The Group With \n Other People"
+            android:textColor="#403e3e"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textViewb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_splash1_text"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:gravity="center"
+            android:text=" Lorem ipsum dolor sit amet, consectuter \n adipiscing elit. Nunc mattis id libero ut \n finibus. Nullam et torlor aliquam quam \n dignissim ullamcorper."
+            android:textColor="#979494"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

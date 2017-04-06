@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "766882919828",
+    "firebase_url": "https://team-on.firebaseio.com",
+    "project_id": "team-on",
+    "storage_bucket": "team-on.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766882919828:android:41680c65e1045a9c",
+        "android_client_info": {
+          "package_name": "com.app.archirayan.teamon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766882919828-pfchosspdlns67k6bdgl85ktgdl8254k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.archirayan.teamon",
+            "certificate_hash": "1E1B0268BD3F283050B7BC33BB2942D08078E6B5"
+          }
+        },
+        {
+          "client_id": "766882919828-hha0m7ueuedpsf1eulcbujseoj0d335q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoKQ-WU6kRDSryNvT8w831A-8N7L2e8ro"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766882919828-hha0m7ueuedpsf1eulcbujseoj0d335q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

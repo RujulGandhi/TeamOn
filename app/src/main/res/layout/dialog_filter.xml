@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dialog_title_bg"
+        android:gravity="center"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/filter"
+        android:textColor="@color/dialog_title_text_color"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="@string/price_range"
+        android:textColor="@color/dialog_subtitle_text_color"
+        android:textSize="@dimen/_14sdp" />
+
+    <com.app.archirayan.teamon.Widget.MultiRangeDollar
+        android:id="@+id/dialog_filter_price_range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        rsb:absoluteMaxValue="150"
+        rsb:absoluteMinValue="0"
+        rsb:activeColor="@color/toolBarPink"
+        rsb:barHeight="@dimen/_5sdp"
+        rsb:textAboveThumbsColor="@android:color/holo_purple"
+        rsb:thumbDisabled="@drawable/multirange_seekbar_shape"
+        rsb:thumbNormal="@drawable/multirange_seekbar_shape"
+        rsb:thumbPressed="@drawable/multirange_seekbar_shape"
+        rsb:thumbShadow="false"
+        rsb:thumbShadowBlur="3dp"
+        rsb:valuesAboveThumbs="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="@string/sales_range"
+        android:textColor="@color/dialog_subtitle_text_color"
+        android:textSize="@dimen/_14sdp" />
+
+    <com.app.archirayan.teamon.Widget.MultiRange
+        android:id="@+id/dialog_filter_sale_qty_range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        rsb:absoluteMaxValue="150"
+        rsb:absoluteMinValue="0"
+        rsb:activeColor="@color/toolBarPink"
+        rsb:barHeight="@dimen/_5sdp"
+        rsb:textAboveThumbsColor="@android:color/holo_purple"
+        rsb:thumbDisabled="@drawable/multirange_seekbar_shape"
+        rsb:thumbNormal="@drawable/multirange_seekbar_shape"
+        rsb:thumbPressed="@drawable/multirange_seekbar_shape"
+        rsb:thumbShadow="false"
+        rsb:thumbShadowBlur="3dp"
+        rsb:valuesAboveThumbs="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/dialog_filter_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/selected_button_pink"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/bytime"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8sdp" />
+
+        <TextView
+            android:id="@+id/dialog_filter_sale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/unselected_button_grey"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/bysale"
+            android:textColor="@color/graytextcolor"
+            android:textSize="@dimen/_8sdp" />
+
+        <TextView
+            android:id="@+id/dialog_filter_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/unselected_button_grey"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/byname"
+            android:textColor="@color/graytextcolor"
+            android:textSize="@dimen/_8sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/dialog_filter_reset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/unselected_button_grey"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/reset"
+            android:textColor="@color/toolBarPink"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/dialog_filter_apply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/selected_green_button"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/apply"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+
+    </LinearLayout>
+
+</LinearLayout>

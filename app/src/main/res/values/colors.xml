@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="graytextcolor">#8c8c8c</color>
+    <color name="toolBarPink">#7e3d97</color>
+    <color name="fbbgcolor">#35457c</color>
+    <color name="edittxtbg">#7c6287</color>
+    <color name="white">@android:color/white</color>
+    <color name="pink">#B28CC1</color>
+    <color name="darkPink">#A07EAD</color>
+    <color name="splashdetailcolor">#898787</color>
+    <color name="splashdatacolor">#4b4949</color>
+    <color name="twentytoolBarPink">#b28cc1</color>
+    <color name="green">#a9cf40</color>
+    <color name="lightpinkbackground">#f5f0f7</color>
+    <color name="splashskipbtn">#cccccc</color>
+    <color name="unselectedbggray">#EEEEEE</color>
+    <color name="selectedbggreen">#A9D041</color>
+    <color name="bggray">#edecec</color>
+    <color name="qtycolor">#eeeeee</color>
+    <color name="checkboxcolor">#cccccc</color>
+    <color name="checkboxtext">#666666</color>
+    <color name="whishlisttextgray">#CECECE</color>
+    <color name="text_color">#CCCCCC</color>
+
+    <color name="grey_600">#666666</color>
+    <color name="grey_900">#999999</color>
+
+    <!-- filter and category dialog -->
+    <color name="dialog_title_bg">#f6f6f6</color>
+    <color name="dialog_subtitle_text_color">#666666</color>
+    <color name="dialog_divider">#cccccc</color>
+    <color name="dialog_title_text_color">@color/toolBarPink</color>
+
+    <!--- Navigation screen -->
+    <color name="selected_action_background">#f2f2f2</color>
+
+    <!--- notification list -->
+    <color name="notification_title">#b2ca69</color>
+    <color name="notification_message">#666666</color>
+
+    <!--<color name="lightpinkbackground1">#eeeeee</color>
+    <color name="lightpinkbackgroundtext">#cdcdcd</color>
+    <color name="lightpinkbackgroundprice">#cccccc</color>-->
+
+</resources>

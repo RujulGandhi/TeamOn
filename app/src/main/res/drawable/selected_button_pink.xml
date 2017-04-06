@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="@color/toolBarPink" />
+    <corners android:radius="@dimen/_45sdp" />
+    <stroke
+        android:width="@dimen/_5sdp"
+        android:color="#7e3d97"></stroke>
+</shape>

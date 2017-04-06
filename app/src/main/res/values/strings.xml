@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">team ON</string>
+    <string name="title_activity_main_navigation">MainActivityNavigation</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="UserName">UserName</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="RePassword">RePassword</string>
+    <string name="SignNow">SignNow</string>
+    <string name="home">Home</string>
+    <string name="Loginfb">Login with FaceBook</string>
+    <string name="SignUp">SignUp</string>
+    <string name="Share">Share</string>
+    <string name="nothaks">Not Thanks, Just Want go in!</string>
+    <string name="setting">setting</string>
+    <string name="logout">Logout</string>
+    <string name="whislist">whislist</string>
+    <string name="fullname">Full Name</string>
+    <string name="country">Country</string>
+    <string name="address">Address</string>
+    <string name="zipcode">Zip Code</string>
+    <string name="pono">Phone Number</string>
+    <string name="ltsgo">Lets Go</string>
+    <string name="somethingwentwrong">Something went wrong.</string>
+    <string name="startnow">Start Now</string>
+    <string name="skip">Skip</string>
+    <string name="sign_now">Sign Now</string>
+    <string name="term_and_condition">I have read the Terms</string>
+    <string name="facebook_app_id">201303256942666</string>
+
+
+    <string name="splashdata">Find the group sale</string>
+    <string name="splashdata2">Join To The Group With \n Other People</string>
+    <string name="splashdata3">The more people in the group that \n shops will give a better price!</string>
+
+
+    <string name="splashdetail1">  Lorem ipsum dolor sit amet,consectetur \n adipiscing elit. Nunc mattis id libero ut \n finibus, Nullam et tortor aliquam quam \n dignissim ullamcorper.</string>
+    <string name="splashdetail2"> Lorem ipsum dolor sit amet, consectuter \n adipiscing elit. Nunc mattis id libero ut \n finibus. Nullam et torlor aliquam quam \n dignissim ullamcorper.</string>
+    <string name="splashdetail3">Lorem ipsum dolor sit amet, consectuter \n adipiscing elit. Nunc mattis id libero ut \n finibus. Nullam et torlor aliquam quam \ndignissim ullamcorper.</string>
+
+    <string name="stratnw">START NOW !</string>
+    <string name="acccreat">Your Account As Creatted!</string>
+    <string name="iagree">I have read the Terms</string>
+    <string name="search">Search Team</string>
+    <string name="login">Login</string>
+    <string name="Singin">Sign in</string>
+    <string name="usernameoremail">Username or Email</string>
+    <string name="whishlist">Whishlist</string>
+    <string name="shareit">Share it</string>
+    <string name="buynow">Buy Now</string>
+    <string name="saledetails">Sale details</string>
+    <string name="productdetails">Product details</string>
+    <string name="storedetails">Store Details</string>
+
+    <string name="share1line">Your Order Has Been Placed</string>
+    <string name="share2line">If the price gonna be lower you get refund to you account app</string>
+    <string name="share3line">Defauly you get "PUSH" when the price going lower \n (If you dont ant to get it you can disable from the setting)</string>
+    <string name="share4line">Now it you timeasking you friend come to the group \n and help you lower the price</string>
+
+
+    <string name="logostore">Logo Store</string>
+    <string name="about">About the store :</string>
+    <string name="decabout">Lorem ipsum dolor sit amet, consecteture adipiscing elit. Nunc mattis \n id libero ut finibus. Nullam et tortor aliquam  quam dignissim ullamcor- \n per.</string>
+
+    <string name="addrs">Address :</string>
+    <string name="decaddrs">118 Castle Black Avenue. \n Winterfell B35 4HE, United Kingdom</string>
+
+
+    <string name="pypalline1">How Much Units You Want?</string>
+    <string name="pypalline2">Use Your Balance $35</string>
+    <string name="pypalline3">Pick From the store/free shipping \n (you change until the sale over)</string>
+    <string name="readterms">I have read the terms</string>
+    <string name="pypalline5">Pay With Paypal</string>
+    <string name="cancle">Cancel</string>
+    <string name="whistlist_green">Whistlist</string>
+    <string name="whistlist_gray">+ Whistlist</string>
+    <string name="category">Category</string>
+    <string name="filter">Filter</string>
+    <string name="cancel">Cancel</string>
+    <string name="send">SEND</string>
+    <string name="price_range">Price Range</string>
+    <string name="bytime">By Time</string>
+    <string name="byname">By Name</string>
+    <string name="bysale">By Sale</string>
+    <string name="apply">Apply</string>
+    <string name="reset">Reset</string>
+    <string name="sales_range">Sold Range</string>
+    <string name="connect">Connect Successfully.</string>
+    <string name="delivery">Delivery</string>
+    <string name="status">STATUS</string>
+    <string name="problem">Have Problem?</string>
+    <string name="ihaveproblem">I have problem with the order</string>
+    <string name="iconfirm">I confirm that I received the invitation</string>
+    <string name="gotosale">Go to The Sale</string>
+    <string name="completed">Completed</string>
+    <string name="orders">Orders</string>
+    <string name="notover">Not Over</string>
+    <string name="SendTo">share to</string>
+    <string name="loading">Loading.. </string>
+    <string name="order">Order</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="notification">Notification</string>
+    <string name="change">Change</string>
+    <string name="changeemail">Email changed sucessfully.</string>
+    <string name="oldpwd">Old password</string>
+    <string name="newpwd">New Password</string>
+    <string name="repwd">Re-Password</string>
+    <string name="changepassword">Password changed sucessfully</string>
+    <string name="changeaddress">Address changed sucessfully</string>
+    <string name="addressline1">Address Line 1</string>
+    <string name="addressline2">Address Line 2</string>
+    <string name="total">Total</string>
+    <string name="error_nodata">Sorry , No data found</string>
+</resources>
