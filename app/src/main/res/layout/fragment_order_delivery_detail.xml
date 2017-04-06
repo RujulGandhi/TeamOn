@@ -276,6 +276,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/fragment_order_delivery_details_chat"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:orientation="horizontal"

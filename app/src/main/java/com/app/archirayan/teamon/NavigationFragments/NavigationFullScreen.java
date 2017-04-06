@@ -12,23 +12,31 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.app.archirayan.teamon.Adapter.SettingNotificationAdapter;
+import com.app.archirayan.teamon.Model.NotificationSettingDetails;
 import com.app.archirayan.teamon.R;
 import com.app.archirayan.teamon.retrofit.ApiClient;
 import com.app.archirayan.teamon.retrofit.ApiInterface;
 import com.app.archirayan.teamon.retrofit.Model.EditEmailDetails;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.app.archirayan.teamon.Utils.Constant.SETTING_NOTIFICATION;
 import static com.app.archirayan.teamon.Utils.Constant.USERID;
 import static com.app.archirayan.teamon.Utils.Utils.ReadSharePrefrence;
 
@@ -45,7 +53,7 @@ public class NavigationFullScreen extends Fragment implements View.OnClickListen
     private ExpandableLayout addressExpandable, emailExpandable, notificationExpandable, passwordExpandable;
     private ViewFlipper emailViewFliper, pwdViewFliper, addressViewFliper;
     private Dialog pd;
-
+    private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,7 +69,7 @@ public class NavigationFullScreen extends Fragment implements View.OnClickListen
 
         backIv = (ImageView) view.findViewById(R.id.fragment_navigation_setting_main_back);
         updateSucessMsgTv = (TextView) view.findViewById(R.id.fragment_sucessfullyupdate_mail);
-
+        listView = (ListView) view.findViewById(R.id.fragment_notification_setting__main_notification_list);
         // TODO: 09-Mar-17 main textview
         addressTv = (TextView) view.findViewById(R.id.fragment_navigation_setting_main_address);
         emailTv = (TextView) view.findViewById(R.id.fragment_navigation_setting_main_email);
@@ -102,6 +110,15 @@ public class NavigationFullScreen extends Fragment implements View.OnClickListen
         passwordTv.setOnClickListener(this);
         editEmailSubmitTv.setOnClickListener(this);
         addressUpdateTv.setOnClickListener(this);
+
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<NotificationSettingDetails>>() {
+        }.getType();
+
+        ArrayList<NotificationSettingDetails> array = (gson.fromJson(ReadSharePrefrence(getActivity(), SETTING_NOTIFICATION), type));
+        SettingNotificationAdapter adapter = new SettingNotificationAdapter(getActivity(), array);
+        listView.setAdapter(adapter);
+
     }
 
     @Override
@@ -163,6 +180,7 @@ public class NavigationFullScreen extends Fragment implements View.OnClickListen
                 addressExpandable.collapse();
                 emailExpandable.collapse();
                 passwordExpandable.collapse();
+
 
                 break;
             case R.id.fragment_navigation_setting_main_password:

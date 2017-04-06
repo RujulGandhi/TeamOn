@@ -2,6 +2,7 @@ package com.app.archirayan.teamon.Fragment;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -20,10 +21,12 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.archirayan.teamon.Activity.Test;
 import com.app.archirayan.teamon.Model.OrderDetails;
 import com.app.archirayan.teamon.R;
 import com.app.archirayan.teamon.Utils.Utils;
@@ -39,6 +42,7 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.app.archirayan.teamon.Utils.Constant.BASE_URL;
 import static com.app.archirayan.teamon.Utils.Constant.MYBALANCE;
@@ -86,8 +90,12 @@ public class OrderDeliveryDetail extends Fragment {
     @BindView(R.id.fragment_order_devlivery_detail_status)
     public TextView statusTv;
 
+    @BindView(R.id.fragment_order_delivery_details_chat)
+    public LinearLayout chatScreenTv;
+
     @BindView(R.id.fragment_completed_orders_delivery_detail_txtcompleted)
     public TextView mainStatusTv;
+
     public Utils utils;
     private ArrayList<String> userArray;
     private Dialog withdrawDialog;
@@ -106,7 +114,6 @@ public class OrderDeliveryDetail extends Fragment {
     public void onResume() {
         super.onResume();
         if (getArguments() != null) {
-
             String data = getArguments().getString(ORDERDETAILSKEY);
             Gson gson = new Gson();
             OrderDetails orderDetailsObj = gson.fromJson(data, OrderDetails.class);
@@ -125,6 +132,14 @@ public class OrderDeliveryDetail extends Fragment {
             }
             deliveryTv.setText("Delivery method - " + orderDetailsObj.getShippingMethod());
         }
+    }
+
+    @OnClick(R.id.fragment_order_delivery_details_chat)
+    public void redirectToChat() {
+
+        Intent in = new Intent(getActivity(), Test.class);
+        startActivity(in);
+
     }
 
     @Override

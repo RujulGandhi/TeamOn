@@ -101,7 +101,6 @@ public class Test extends AppCompatActivity {
                 public void onResponse(Call<SendMessageDetails> call, Response<SendMessageDetails> response) {
                     if (response.body().getStatus().equalsIgnoreCase("true")) {
 
-
                         MessageDetails details = new MessageDetails();
                         details.setSender("5");
                         details.setRecipient("1");

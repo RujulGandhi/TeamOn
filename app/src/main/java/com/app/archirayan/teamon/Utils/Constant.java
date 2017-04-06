@@ -38,6 +38,7 @@ public class Constant {
     public static final String FILTER_BY_PRODUCTTIME = "time_duration";
     public static final String FILTER_BY_PRODUCTSALE = "sales_qty";
     public static final String DEVICETYPE = "android";
+    public static final String SETTING_NOTIFICATION = "setting_notification";
 
     public static final int MESSAGE_MIN_LENGTH = 0;
     public static final int MESSAGE_MAX_LENGTH = 100;

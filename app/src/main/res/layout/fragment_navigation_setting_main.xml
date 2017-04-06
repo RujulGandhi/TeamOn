@@ -139,7 +139,10 @@
         app:el_duration="200"
         app:el_expanded="false">
 
-        <include layout="@layout/fragment_edit_address"></include>
+        <ListView
+            android:id="@+id/fragment_notification_setting__main_notification_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </net.cachapa.expandablelayout.ExpandableLayout>
 </LinearLayout>

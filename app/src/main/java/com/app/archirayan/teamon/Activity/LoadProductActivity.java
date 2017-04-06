@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.app.archirayan.teamon.Model.CategoryDetails;
+import com.app.archirayan.teamon.Model.NotificationSettingDetails;
 import com.app.archirayan.teamon.Model.ProductDetail;
 import com.app.archirayan.teamon.R;
 import com.app.archirayan.teamon.Utils.Utils;
@@ -31,6 +32,7 @@ import static com.app.archirayan.teamon.Utils.Constant.MAXPRICE;
 import static com.app.archirayan.teamon.Utils.Constant.MAXSALE;
 import static com.app.archirayan.teamon.Utils.Constant.NOTIFICATIONCOUNT;
 import static com.app.archirayan.teamon.Utils.Constant.SELECTEDCATID;
+import static com.app.archirayan.teamon.Utils.Constant.SETTING_NOTIFICATION;
 import static com.app.archirayan.teamon.Utils.Constant.SORTING_BY;
 import static com.app.archirayan.teamon.Utils.Constant.STARTPRICE;
 import static com.app.archirayan.teamon.Utils.Constant.STARTSALEQTY;
@@ -49,6 +51,7 @@ public class LoadProductActivity extends Activity {
     public String uId;
     public ArrayList<ProductDetail> arrayList;
     public ArrayList<CategoryDetails> categoryArray;
+    public ArrayList<NotificationSettingDetails> settingNotificationArray;
     public AVLoadingIndicatorView loading;
     public String notification_count;
     private Long MaxValuePrice, MaxValueSale, currentBalance;
@@ -90,6 +93,7 @@ public class LoadProductActivity extends Activity {
             loading.show();
             categoryArray = new ArrayList<>();
             arrayList = new ArrayList<>();
+            settingNotificationArray = new ArrayList<>();
         }
 
         @Override
@@ -104,6 +108,8 @@ public class LoadProductActivity extends Activity {
                 if (object.getString("status").equalsIgnoreCase("true")) {
                     JSONArray mainArray = object.getJSONArray("data");
                     JSONArray mainCategoryArray = object.getJSONArray("category");
+                    JSONArray mainNotificationEnable = object.getJSONArray("notification");
+
                     MaxValuePrice = Long.valueOf(object.getString("max_price"));
                     MaxValueSale = Long.valueOf(object.getString("max_stock"));
                     currentBalance = Long.valueOf(object.getString("current_balance"));
@@ -137,6 +143,16 @@ public class LoadProductActivity extends Activity {
                     }
 
 
+                    for (int k = 0; k < mainNotificationEnable.length(); k++) {
+                        JSONObject notiObject = mainNotificationEnable.getJSONObject(k);
+                        NotificationSettingDetails details = new NotificationSettingDetails();
+                        details.setNotId(notiObject.getString("id"));
+                        details.setNotName(notiObject.getString("name"));
+                        details.setIsEnable(notiObject.getString("status"));
+                        settingNotificationArray.add(details);
+                    }
+
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -156,6 +172,7 @@ public class LoadProductActivity extends Activity {
             Gson gson = new Gson();
             String allProduct = gson.toJson(arrayList);
             String allCategory = gson.toJson(categoryArray);
+            String allSettingNoti = gson.toJson(settingNotificationArray);
 
             WriteSharePrefrence(LoadProductActivity.this, ALLPRODUCT, allProduct);
             WriteSharePrefrence(LoadProductActivity.this, ALLCATEGORY, allCategory);
@@ -163,11 +180,13 @@ public class LoadProductActivity extends Activity {
             WriteSharePrefrence(LoadProductActivity.this, MAXSALE, String.valueOf(MaxValueSale));
             WriteSharePrefrence(LoadProductActivity.this, WALLETBALANCE, String.valueOf(currentBalance));
             WriteSharePrefrence(LoadProductActivity.this, NOTIFICATIONCOUNT, String.valueOf(notification_count));
+            WriteSharePrefrence(LoadProductActivity.this, SETTING_NOTIFICATION, allSettingNoti);
 
             Intent in = new Intent(LoadProductActivity.this, MainActivity.class);
             in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(in);
             finish();
+
 
         }
     }
