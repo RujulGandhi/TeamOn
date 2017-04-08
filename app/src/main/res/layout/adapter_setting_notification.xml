@@ -20,7 +20,7 @@
         android:id="@+id/adapter_setting_noti_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
-        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:gravity="center|left"
         android:textColor="@color/toolBarPink"
         android:textSize="@dimen/_10sdp" />
 </LinearLayout>

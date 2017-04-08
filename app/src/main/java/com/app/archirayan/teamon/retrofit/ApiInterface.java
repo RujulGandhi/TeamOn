@@ -3,6 +3,7 @@ package com.app.archirayan.teamon.retrofit;
 import com.app.archirayan.teamon.Model.NotificationListDetails;
 import com.app.archirayan.teamon.retrofit.Model.Chat.ChatDetails;
 import com.app.archirayan.teamon.retrofit.Model.EditEmailDetails;
+import com.app.archirayan.teamon.retrofit.Model.NotificationUpdate.UpdateSettingDetails;
 import com.app.archirayan.teamon.retrofit.Model.PaypalBasicRes;
 import com.app.archirayan.teamon.retrofit.Model.PaypalEmail;
 import com.app.archirayan.teamon.retrofit.Model.SendMessageDetails;
@@ -54,5 +55,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("insert_chat_msg.php")
     Call<SendMessageDetails> addChatData(@FieldMap Map<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("enable_disable_notification.php")
+    Call<UpdateSettingDetails> settingIsUpdated(@FieldMap Map<String, String> mMap);
 
 }

@@ -18,7 +18,6 @@ import android.util.Log;
 import com.app.archirayan.teamon.Activity.LoadProductActivity;
 import com.app.archirayan.teamon.Activity.Test;
 import com.app.archirayan.teamon.R;
-import com.app.archirayan.teamon.retrofit.Model.Chat.MessageDetails;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -30,8 +29,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import static com.app.archirayan.teamon.Activity.Test.listMsgDetails;
 
 /**
  * Created by archirayan on 19-Jan-17.
@@ -55,20 +52,11 @@ public class MyMessagingService extends FirebaseMessagingService {
             String jsonString = remoteMessage.getData().toString().substring(6, remoteMessage.getData().toString().length() - 1);
             Log.d("JSONSTring", jsonString);
             try {
+
                 JSONObject mainObject = new JSONObject(jsonString);
                 title = mainObject.getString("title");
                 message = mainObject.getString("message");
-//                image = mainObject.getString("image");
-                Log.d("title", title + " == " + message);
-                MessageDetails details = new MessageDetails();
-                details.setSender("1");
-                details.setRecipient("5");
-                details.setName("archi");
-                details.setSubject("Archirayan");
-                details.setText(message);
-
-                listMsgDetails.add(details);
-//                adapter.notifyDataSetChanged();
+                image = mainObject.getString("image");
 
             } catch (JSONException e) {
                 Log.d("Error", e.toString());

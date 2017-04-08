@@ -56,39 +56,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Handler handler;
     private Runnable runnable;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         navigationDrawerLinear = (LinearLayout) findViewById(R.id.activity_main_navigation_linear);
         navigationDrawerFrame = (FrameLayout) findViewById(R.id.activity_main_navigation_frame);
-
         utils = new Utils(MainActivity.this);
         String isFirstTime = utils.getReadSharedPrefrenceIsFirstTime();
 
         // TODO: 24-Mar-17 if user is first time the will redirect to splash
         if (isFirstTime.equalsIgnoreCase("")) {
-
             Intent i = new Intent(MainActivity.this, SplashActivity.class);
             startActivity(i);
-
         } else {
-
             String userId = Utils.ReadSharePrefrence(this, Constant.USERID);
             if (userId.equals("")) {
-
                 Intent i = new Intent(MainActivity.this, FacebookLoginActivity.class);
                 startActivity(i);
-
             } else {
-
                 setContentView(R.layout.activity_main);
 
                 mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

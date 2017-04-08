@@ -149,6 +149,7 @@ public class LoadProductActivity extends Activity {
                         details.setNotId(notiObject.getString("id"));
                         details.setNotName(notiObject.getString("name"));
                         details.setIsEnable(notiObject.getString("status"));
+                        Log.d("Status: ", notiObject.getString("status"));
                         settingNotificationArray.add(details);
                     }
 

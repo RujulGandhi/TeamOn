@@ -19,11 +19,13 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int SENDERVIEW = 0;
     private static final int RECEIVERVIEW = 1;
+    String userId;
     private Context context;
     private List<MessageDetails> chatArray;
 
-    public ChatAdapter(List<MessageDetails> data) {
-        this.chatArray = data;
+    public ChatAdapter(List<MessageDetails> listMsgDetails, String userId) {
+        this.chatArray = listMsgDetails;
+        this.userId = userId;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (chatArray.get(position).getSender().equalsIgnoreCase("0")) {
+        if (chatArray.get(position).getRecipient().equalsIgnoreCase(userId)) {
             return RECEIVERVIEW;
         } else {
             return SENDERVIEW;

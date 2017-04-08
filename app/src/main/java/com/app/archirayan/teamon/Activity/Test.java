@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.app.archirayan.teamon.Adapter.ChatAdapter;
 import com.app.archirayan.teamon.R;
@@ -29,6 +29,8 @@ import retrofit2.Response;
 
 import static com.app.archirayan.teamon.Utils.Constant.MESSAGE_MAX_LENGTH;
 import static com.app.archirayan.teamon.Utils.Constant.MESSAGE_MIN_LENGTH;
+import static com.app.archirayan.teamon.Utils.Constant.USERID;
+import static com.app.archirayan.teamon.Utils.Utils.ReadSharePrefrence;
 
 /**
  * Created by archirayan on 09-Dec-16.
@@ -44,6 +46,7 @@ public class Test extends AppCompatActivity {
     public EditText msgEdt;
     @BindView(R.id.activity_test_send)
     public ImageView sendIV;
+    public String userId;
     private ApiInterface apiInterface;
 
     @Override
@@ -57,17 +60,19 @@ public class Test extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         // TODO: 31-Mar-17 API Call for get chat
+        userId = ReadSharePrefrence(Test.this, USERID);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         HashMap<String, String> mMap = new HashMap<>();
-        mMap.put("user_id", "5");
+        mMap.put("user_id", userId);
         Call<ChatDetails> callApi = apiInterface.getChatDetails(mMap);
         callApi.enqueue(new Callback<ChatDetails>() {
             @Override
             public void onResponse(Call<ChatDetails> call, Response<ChatDetails> response) {
                 if (response.body().getStatus().equalsIgnoreCase("true")) {
 
+                    // TODO: 07-Apr-17 set adapter for chat message
                     listMsgDetails = response.body().getData();
-                    adapter = new ChatAdapter(listMsgDetails);
+                    adapter = new ChatAdapter(listMsgDetails, userId);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(mLayoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -79,7 +84,6 @@ public class Test extends AppCompatActivity {
             @Override
             public void onFailure(Call<ChatDetails> call, Throwable t) {
 
-
             }
         });
     }
@@ -89,10 +93,10 @@ public class Test extends AppCompatActivity {
 
         if (msgEdt.length() > MESSAGE_MIN_LENGTH && msgEdt.length() < MESSAGE_MAX_LENGTH) {
             HashMap<String, String> mMap = new HashMap<>();
-//            sender=3&subject=wallet&name=rayan&text=update
-            mMap.put("sender", "5");
-            mMap.put("subject", "Testing");
-            mMap.put("name", "Archirayan3");
+
+            mMap.put("sender", userId);
+            mMap.put("subject", "");
+            mMap.put("name", "");
             mMap.put("text", msgEdt.getText().toString());
             //            http://easydatasearch.com/easydata1/teamon/api/insert_chat_msg.php?sender=2&recipient=4&subject=wallet&name=rayan&text=give%20me%20new%20stock%20update
             Call<SendMessageDetails> callApi = apiInterface.addChatData(mMap);
@@ -102,17 +106,18 @@ public class Test extends AppCompatActivity {
                     if (response.body().getStatus().equalsIgnoreCase("true")) {
 
                         MessageDetails details = new MessageDetails();
-                        details.setSender("5");
+                        details.setSender(userId);
                         details.setRecipient("1");
-                        details.setName("archi");
-                        details.setSubject("Archirayan");
+                        details.setName("");
+                        details.setSubject("");
                         details.setText(msgEdt.getText().toString());
 
                         listMsgDetails.add(details);
                         msgEdt.setText("");
                         adapter.notifyDataSetChanged();
 
-                        Toast.makeText(Test.this, "Message sent sucessfully.", Toast.LENGTH_SHORT).show();
+                        Log.d("Test", userId);
+
 //                        ChatAdapter adapter = new ChatAdapter(response.body().getData());
 //                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 ////                    recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
