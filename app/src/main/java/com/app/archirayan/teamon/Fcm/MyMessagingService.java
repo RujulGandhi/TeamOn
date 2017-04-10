@@ -52,12 +52,10 @@ public class MyMessagingService extends FirebaseMessagingService {
             String jsonString = remoteMessage.getData().toString().substring(6, remoteMessage.getData().toString().length() - 1);
             Log.d("JSONSTring", jsonString);
             try {
-
                 JSONObject mainObject = new JSONObject(jsonString);
                 title = mainObject.getString("title");
                 message = mainObject.getString("message");
                 image = mainObject.getString("image");
-
             } catch (JSONException e) {
                 Log.d("Error", e.toString());
             }
@@ -80,12 +78,10 @@ public class MyMessagingService extends FirebaseMessagingService {
 //            new generatePictureStyleNotification("Title", "Message", "http://api.androidhive.info/images/sample.jpg").execute();
             sendNotification(remoteMessage.getNotification().getBody());
         }
-
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
     }
     // [END receive_message]
-
     /**
      * Create and show a simple notification containing the received FCM message.
      *
@@ -104,7 +100,6 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)
-//                .setLargeIcon(bmp)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);

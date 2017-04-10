@@ -47,39 +47,42 @@ import static com.app.archirayan.teamon.Utils.Utils.WriteSharePrefrence;
 
 public class LoadProductActivity extends Activity {
 
-    public Utils utils;
-    public String uId;
-    public ArrayList<ProductDetail> arrayList;
-    public ArrayList<CategoryDetails> categoryArray;
-    public ArrayList<NotificationSettingDetails> settingNotificationArray;
-    public AVLoadingIndicatorView loading;
-    public String notification_count;
+    private Utils utils;
+    private String uId;
+    private ArrayList<ProductDetail> arrayList;
+    private ArrayList<CategoryDetails> categoryArray;
+    private ArrayList<NotificationSettingDetails> settingNotificationArray;
+    private AVLoadingIndicatorView loading;
+    private String notification_count;
     private Long MaxValuePrice, MaxValueSale, currentBalance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_product);
-
         loading = (AVLoadingIndicatorView) findViewById(R.id.loading_product);
         utils = new Utils(LoadProductActivity.this);
         uId = ReadSharePrefrence(LoadProductActivity.this, USERID);
-
         String isFirstTime = utils.getReadSharedPrefrenceIsFirstTime();
         if (isFirstTime.equalsIgnoreCase("")) {
             Intent i = new Intent(LoadProductActivity.this, SplashActivity.class);
             startActivity(i);
         } else {
-            if (utils.isConnectingToInternet()) {
-                WriteSharePrefrence(LoadProductActivity.this, STARTPRICE, "");
-                WriteSharePrefrence(LoadProductActivity.this, ENDPRICE, "");
-                WriteSharePrefrence(LoadProductActivity.this, STARTSALEQTY, "");
-                WriteSharePrefrence(LoadProductActivity.this, ENDSALEQTY, "");
-                WriteSharePrefrence(LoadProductActivity.this, SELECTEDCATID, "");
-                WriteSharePrefrence(LoadProductActivity.this, SORTING_BY, "product_name");
-                new GetAllProduct().execute();
+            if (uId.equalsIgnoreCase("")) {
+                Intent i = new Intent(LoadProductActivity.this, FacebookLoginActivity.class);
+                startActivity(i);
             } else {
-                Toast.makeText(this, getString(R.string.somethingwentwrong), Toast.LENGTH_SHORT).show();
+                if (utils.isConnectingToInternet()) {
+                    WriteSharePrefrence(LoadProductActivity.this, STARTPRICE, "");
+                    WriteSharePrefrence(LoadProductActivity.this, ENDPRICE, "");
+                    WriteSharePrefrence(LoadProductActivity.this, STARTSALEQTY, "");
+                    WriteSharePrefrence(LoadProductActivity.this, ENDSALEQTY, "");
+                    WriteSharePrefrence(LoadProductActivity.this, SELECTEDCATID, "");
+                    WriteSharePrefrence(LoadProductActivity.this, SORTING_BY, "product_name");
+                    new GetAllProduct().execute();
+                } else {
+                    Toast.makeText(this, getString(R.string.somethingwentwrong), Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
@@ -142,7 +145,6 @@ public class LoadProductActivity extends Activity {
                         categoryArray.add(details);
                     }
 
-
                     for (int k = 0; k < mainNotificationEnable.length(); k++) {
                         JSONObject notiObject = mainNotificationEnable.getJSONObject(k);
                         NotificationSettingDetails details = new NotificationSettingDetails();
@@ -152,8 +154,6 @@ public class LoadProductActivity extends Activity {
                         Log.d("Status: ", notiObject.getString("status"));
                         settingNotificationArray.add(details);
                     }
-
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
