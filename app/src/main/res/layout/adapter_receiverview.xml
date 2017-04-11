@@ -14,6 +14,6 @@
         android:gravity="left"
         android:padding="@dimen/_5sdp"
         android:textColor="@color/cardview_dark_background"
-        android:textSize="@dimen/_18sdp" />
+        android:textSize="@dimen/_14sdp" />
 
 </LinearLayout>

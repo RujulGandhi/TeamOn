@@ -204,13 +204,14 @@ public class Home extends Fragment implements View.OnClickListener {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy >= 0) {
+                if (dy > 0) {
                     // Scrolling up
-                    snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
-                    snackbar.show();
+                    snackbar.dismiss();
                 } else {
                     // Scrolling down
-                    snackbar.dismiss();
+
+                    snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+                    snackbar.show();
                 }
             }
         });

@@ -47,6 +47,7 @@ public class MyMessagingService extends FirebaseMessagingService {
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
+
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 //            String jsonString = remoteMessage.getData().toString().replace("=", ":\"").replace(",", "\",").replace("}", "\"}");
             String jsonString = remoteMessage.getData().toString().substring(6, remoteMessage.getData().toString().length() - 1);
@@ -65,30 +66,28 @@ public class MyMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody().replace("=", ":"));
             String jsonString = remoteMessage.getNotification().getBody().replace("=", ":");
-            Log.d("JSONSTring", jsonString);
             try {
                 JSONObject mainObject = new JSONObject(jsonString);
                 title = mainObject.getString("title");
                 image = mainObject.getString("image");
                 message = mainObject.getString("message");
-                Log.d("title", title + " == " + message);
             } catch (JSONException e) {
                 Log.d("Error", e.toString());
             }
-//            new generatePictureStyleNotification("Title", "Message", "http://api.androidhive.info/images/sample.jpg").execute();
             sendNotification(remoteMessage.getNotification().getBody());
         }
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
     }
     // [END receive_message]
+
     /**
      * Create and show a simple notification containing the received FCM message.
      *
      * @param messageBody FCM message body received.
      */
     private void sendNotification(String messageBody) {
-//        Bitmap bmp = getBitmapFromURL(image);
+        Bitmap bmp = getBitmapFromURL(image);
         Intent intent = new Intent(this, Test.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -101,6 +100,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(bmp)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 

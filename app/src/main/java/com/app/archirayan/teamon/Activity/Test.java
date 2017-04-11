@@ -73,11 +73,11 @@ public class Test extends AppCompatActivity {
                     // TODO: 07-Apr-17 set adapter for chat message
                     listMsgDetails = response.body().getData();
                     adapter = new ChatAdapter(listMsgDetails, userId);
+                    recyclerView.scrollToPosition(adapter.getItemCount() - 1);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(mLayoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                     recyclerView.setAdapter(adapter);
-
                 }
             }
 
