@@ -20,6 +20,10 @@ import com.app.archirayan.teamon.Utils.Constant;
 import com.app.archirayan.teamon.Utils.Utils;
 import com.google.gson.Gson;
 
+import static com.app.archirayan.teamon.Utils.Constant.ANYUPDATE;
+import static com.app.archirayan.teamon.Utils.Utils.ReadSharePrefrence;
+import static com.app.archirayan.teamon.Utils.Utils.WriteSharePrefrence;
+
 /**
  * Created by archi on 12/13/2016.
  */
@@ -86,7 +90,7 @@ public class ProductThankyou extends Fragment implements View.OnClickListener {
                 handler.postDelayed(this, 1000);
 
                 Gson gson = new Gson();
-                Utils.WriteSharePrefrence(getActivity(), Constant.PRODUCT_STORE_SALE, gson.toJson(productFullDetails));
+                WriteSharePrefrence(getActivity(), Constant.PRODUCT_STORE_SALE, gson.toJson(productFullDetails));
             }
         };
         handler = new Handler();
@@ -98,9 +102,13 @@ public class ProductThankyou extends Fragment implements View.OnClickListener {
 
     private void getArgument() {
         Gson gsonbuynow = new Gson();
-        String strObj = getArguments().getString("productstoresaledetails");
+        String strObj = ReadSharePrefrence(getActivity(), Constant.PRODUCT_STORE_SALE);
         productFullDetails = gsonbuynow.fromJson(strObj, ProductStoreSaleDetail.class);
-
+        Bundle bundle = this.getArguments();
+        Long addedQty = 0L;
+        if (bundle != null) {
+            addedQty = bundle.getLong("qty", 0);
+        }
         time = productFullDetails.getTime();
         // txtSaleqty.setText(String.valueOf(productFullDetails.getSaleQty()));
         txtTitle.setText(productFullDetails.getTitle());
@@ -108,7 +116,9 @@ public class ProductThankyou extends Fragment implements View.OnClickListener {
         txtOldprice.setText("$ " + productFullDetails.getPrice());
         txtOldprice.setPaintFlags(txtOldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         txtStorename.setText(productFullDetails.getStepWinnerName());
-        txtUnitsales.setText(productFullDetails.getSaleQty().toString());
+        Long qty = productFullDetails.getSaleQty() + addedQty;
+        txtUnitsales.setText("Unit sales " + qty);
+        WriteSharePrefrence(getActivity(), ANYUPDATE, "1");
     }
 
 

@@ -189,32 +189,9 @@ public class ProductBuy extends Fragment implements View.OnClickListener {
             resultAmount = (qty * productPrice);
 
         }
-
         txtResult.setText("$ " + resultAmount);
-//        discountAmount = Integer.parseInt(ReadSharePrefrence(getActivity(), Constant.MYBALANCE));
-//        Double finalResult = setMaxValue();
-//
-//        if (finalResult > discountAmount) {
-//
-//            discountAmount = discountAmount;
-//
-//        } else {
-//
-//            discountAmount = finalResult.intValue();
-//
-//        }
-//
-//        discountAmount = !isSwitchOn ? 0 : discountAmount;
-//        txtDiscount.setText("" + discountAmount);
-//        txtResult.setText("" + String.format("%.2f", getFinalPrice(perUnitProductPrice, qty, discountAmount)));
 
     }
-
-//    private Double setMaxValue() {
-//        Double finalResult = qty * productPrice;
-//        txtDiscount.setFilters(new InputFilter[]{new InputFilterMinMax(0, finalResult.intValue())});
-//        return finalResult;
-//    }
 
     private void getArgument() {
         Gson gsonbuynow = new Gson();
@@ -231,15 +208,12 @@ public class ProductBuy extends Fragment implements View.OnClickListener {
 
     @Override
     public void onDestroy() {
-
         getActivity().stopService(new Intent(getActivity(), PayPalService.class));
         super.onDestroy();
-
     }
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.fragment_buy_now_paypal:
                 qty = parseInt(txtQuantity.getText().toString());
@@ -256,22 +230,16 @@ public class ProductBuy extends Fragment implements View.OnClickListener {
                     qty = qty - 1;
                     txtQuantity.setText("" + qty);
                     txtResult.setText("$ " + String.format("%.2f", getFinalPrice(perUnitProductPrice, qty, discountAmount)));
-//                    Double finalResult = setMaxValue();
                 }
                 break;
 
             case R.id.fragment_buy_now_imgplus:
-
                 qty = parseInt(txtQuantity.getText().toString());
                 qty = qty + 1;
                 txtQuantity.setText("" + qty);
                 txtResult.setText("$ " + String.format("%.2f", getFinalPrice(perUnitProductPrice, qty, discountAmount)));
-//                Double finalResult = setMaxValue();
-
                 break;
             case R.id.fragment_buy_now_readterms:
-
-
                 String storeImageUrl, aboutStoreStr, addressStoreStr;
                 storeImageUrl = (productFullDetails.getUnitStep().get(productFullDetails.getSelectedStep()).getUserImage());
                 aboutStoreStr = (productFullDetails.getUnitStep().get(productFullDetails.getSelectedStep()).getAboutStore());
@@ -334,62 +302,14 @@ public class ProductBuy extends Fragment implements View.OnClickListener {
             if (confirm != null) {
                 try {
 
-                    Log.i("paymentExampleFull", payment.toJSONObject().toString());
-                    Log.i("paymentExample", confirm.toJSONObject().toString(4));
-
                     String response = confirm.toJSONObject().toString(4);
                     JSONObject object = new JSONObject(response);
-                    final String transactionId = object.getJSONObject("response").getString("id");
-                    Log.d("transactionId", transactionId);
-
+                    String transactionId = object.getJSONObject("response").getString("id");
 
                     new UpdateOrder(transactionId, qty, productFullDetails.getProId()).execute();
 
-//                    String payment_client = confirm.getPayment()
-//                            .toJSONObject().toString();
-//
-//                    Log.e("TAG", "paymentId: " + transactionId
-//                            + ", payment_json: " + payment_client);
-//                    ApiInterface loginService =
-//                            ServiceGenerator.createService(ApiInterface.class, "ASVbu6c7U1SiyweRSlgL4t_Rrag5AEaSdf0SQCgO3K7yw4_jnyG2JQK7xrluE3QY-Y6lM51Wyda2VA4b", "EHSOn-4UbQmerDIvL4_lUQTNxN-JGMgBoNBDf2B-S55h8Ud4XvIXZCZdudgxxkyscJHtEsT9Tv8jIGU8");
-//                    Call<PaypalBasicRes> call = loginService.getLogin("client_credentials");
-//                    call.enqueue(new Callback<PaypalBasicRes>() {
-//                        @Override
-//                        public void onResponse(Call<PaypalBasicRes> call, Response<PaypalBasicRes> response) {
-//
-//                            if (response.isSuccessful()) {
-//                                Toast.makeText(getActivity(), "" + response.body().getAccessToken(), Toast.LENGTH_SHORT).show();
-//
-//                                ApiInterface apiService =
-//                                        ApiClient.getClientPaypal().create(ApiInterface.class);
-//                                String url = "v1/payments/payment/" + transactionId;
-//                                Call<PaypalEmail> call1 = apiService.getEmailId(url, "application/json", "Bearer " + response.body().getAccessToken());
-//                                call1.enqueue(new Callback<PaypalEmail>() {
-//                                    @Override
-//                                    public void onResponse(Call<PaypalEmail> call1, Response<PaypalEmail> response1) {
-//                                        Log.e("ResponsePaypal", response1.body().getPayer().toString());
-//                                        new UpdateOrder(transactionId, qty, productFullDetails.getProId(), response1.body().getPayer().getPayerInfo().getEmail()).execute();
-//                                    }
-//
-//                                    @Override
-//                                    public void onFailure(Call<PaypalEmail> call1, Throwable t) {
-//                                        // Log error here since request failed
-//                                        Log.e("Error", t.toString());
-//                                    }
-//                                });
-//
-//                            } else
-//                                Log.d("error", "error message");
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<PaypalBasicRes> call, Throwable t) {
-//                            // something went completely south (like no internet connection)
-//                            Log.d("Error", t.getMessage());
-//                            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
                 } catch (JSONException e) {
+                    Toast.makeText(getActivity(), getString(R.string.somethingwentwrong), Toast.LENGTH_SHORT).show();
                     Log.e("paymentExample", "an extremely unlikely failure occurred: ", e);
                 }
             }
@@ -436,19 +356,16 @@ public class ProductBuy extends Fragment implements View.OnClickListener {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             pd.dismiss();
-            Log.d("ResponseAFterPayPal", s);
             try {
                 JSONObject object = new JSONObject(s);
+
                 if (object.getString("status").equalsIgnoreCase("true")) {
 
                     Fragment fragment = null;
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("qty", qty);
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     fragment = new ProductThankyou();
-
-                    Gson gson = new Gson();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("productstoresaledetails", gson.toJson(productFullDetails));
-
                     fragment.setArguments(bundle);
                     FragmentTransaction ft = fm.beginTransaction();
                     ft.addToBackStack(null);
@@ -497,7 +414,6 @@ public class ProductBuy extends Fragment implements View.OnClickListener {
                 JSONObject object = new JSONObject(s);
                 if (object.getString("status").equalsIgnoreCase("true")) {
 
-//                    Long saleQty = Long.parseLong(object.getJSONObject("data").getString("sales_qty"));
                     orderId = object.getJSONObject("data").getString("order_id");
                     orderKey = object.getJSONObject("data").getString("order_key");
                     orderTotal = object.getJSONObject("data").getString("order_total");
@@ -505,19 +421,6 @@ public class ProductBuy extends Fragment implements View.OnClickListener {
 //                    productPrice = Double.valueOf(productFullDetails.getUnitStep().get(step).getPerUnitPrice());
                     productPrice = Double.parseDouble(orderTotal);
                     if (productPrice == 0) {
-
-//                        Gson gson = new Gson();
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("productstoresaledetails", gson.toJson(productFullDetails));
-//
-//
-//                        Fragment fragment = null;
-//                        FragmentManager fm = getActivity().getSupportFragmentManager();
-//                        fragment = new ProductThankyou();
-//                        FragmentTransaction ft = fm.beginTransaction();
-//                        ft.addToBackStack(null);
-//                        ft.replace(R.id.fragment_product_details_frame, fragment).commit();
-
                         char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
                         StringBuilder sb = new StringBuilder();
                         Random random = new Random();

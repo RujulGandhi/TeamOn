@@ -261,7 +261,7 @@ public class OrderDetail extends Fragment {
                     paidAmountTv.setText("You pay -" + orderDetail.getString("order_price"));
                     productNameTv.setText(productDetail.getString("post_title"));
                     qtyTv.setText("Unit -" + orderDetail.getString("order_qty"));
-                    priceTv.setText("$ " + productDetail.getString("product_price"));
+                    priceTv.setText("$ " + orderDetail.getString("order_price"));
                     sellerTv.setText("Sale by " + productDetail.getString("seller_name"));
                     statusOfOrderTv.setText(getOrderStatus(orderDetail.getString("order_tracking_status")));
                     String imageUrl = productDetail.getString("product_image");
@@ -281,7 +281,7 @@ public class OrderDetail extends Fragment {
                     details.setOrderId(orderDetail.getString("order_id"));
                     details.setOrderDate(orderDetail.getString("order_date"));
                     details.setOrderImage(imageUrl);
-                    details.setOrderPrice(productDetail.getString("product_price"));
+                    details.setOrderPrice(orderDetail.getString("order_price"));
                     details.setOrderQty(orderDetail.getString("order_qty"));
                     details.setShippingMethod(orderDetail.getString("delivery_method"));
                     details.setOrderStatus(getOrderStatus(orderDetail.getString("order_tracking_status")));

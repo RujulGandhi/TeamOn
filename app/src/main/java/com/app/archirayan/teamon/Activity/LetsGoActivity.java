@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,13 +29,10 @@ public class LetsGoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lets_go);
 
-
         if (getIntent().getExtras() != null) {
             id = getIntent().getExtras().getString("id");
             email = getIntent().getExtras().getString("email");
         }
-
-        Log.d("USERID", "id : " + id + " --  Email " + email);
 
         editFullname = (EditText) findViewById(R.id.activity_lets_go_editfullname);
         editCountry = (EditText) findViewById(R.id.activity_lets_go_editcountry);
@@ -86,7 +82,6 @@ public class LetsGoActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            // http://easydatasearch.com/easydata1/auction_wp/api/insert_user_more_list.php?user_id=3&full_name=samir lakhani&country=junagadh&address=abc&zip_code=123&phone_number_number=456
             return utils.getResponseofGet(Constant.BASE_URL + "add_edit_shipping_billing_address.php?user_id=" + id + "&full_name=" + full_name + "&country=" + country
                     + "&address=" + address + "&zip_code=" + zip_code + "&phone_number=" + phone_number + "&email=" + email);
         }
@@ -98,14 +93,11 @@ public class LetsGoActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(s);
                 if (jsonObject.getString("status").equalsIgnoreCase("true")) {
                     Toast.makeText(LetsGoActivity.this, jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
-
 //                    Utils.WriteSharePrefrence(LetsGoActivity.this, Constant.UserId, jsonObject.getString("ID"));
-
                     Intent i = new Intent(LetsGoActivity.this, ShareActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(i);
                     finish();
-
                 } else {
                     Toast.makeText(LetsGoActivity.this, jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
                 }
@@ -113,8 +105,6 @@ public class LetsGoActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             pd.dismiss();
-
-
         }
 
     }

@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,7 +130,6 @@ public class TabCompleteOrders extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Log.d("TabCompletedResponse", s.toString());
             try {
                 JSONObject object = new JSONObject(s);
                 if (object.getString("status").equalsIgnoreCase("true")) {
@@ -150,7 +148,7 @@ public class TabCompleteOrders extends Fragment {
                             ProductOrdersDetails details = new ProductOrdersDetails();
                             details.setOrderId(dataObject.getString("order_id"));
                             details.setOrderStatus(dataObject.getString("order_tracking_status"));
-                            details.setOrderProPrice(productObject.getString("product_price"));
+                            details.setOrderProPrice(dataObject.getString("order_price"));
                             details.setOrderProName(productObject.getString("post_title"));
                             details.setOrderProSalerName(productObject.getString("seller_name"));
                             if (productObject.has("product_image")) {

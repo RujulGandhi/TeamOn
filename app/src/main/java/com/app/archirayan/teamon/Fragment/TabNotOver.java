@@ -139,7 +139,7 @@ public class TabNotOver extends Fragment {
                             ProductOrdersDetails details = new ProductOrdersDetails();
                             details.setOrderId(dataObject.getString("order_id"));
                             details.setOrderStatus(dataObject.getString("order_tracking_status"));
-                            details.setOrderProPrice(productObject.getString("product_price"));
+                            details.setOrderProPrice(dataObject.getString("order_price"));
                             details.setOrderProName(productObject.getString("post_title"));
                             details.setOrderProSalerName(productObject.getString("seller_name"));
                             if (productObject.has("product_image")) {

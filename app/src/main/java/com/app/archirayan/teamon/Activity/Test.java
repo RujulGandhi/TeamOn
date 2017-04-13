@@ -63,7 +63,7 @@ public class Test extends AppCompatActivity {
         userId = ReadSharePrefrence(Test.this, USERID);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         HashMap<String, String> mMap = new HashMap<>();
-        mMap.put("user_id", userId);
+        mMap.put("uid", userId);
         Call<ChatDetails> callApi = apiInterface.getChatDetails(mMap);
         callApi.enqueue(new Callback<ChatDetails>() {
             @Override

@@ -208,9 +208,8 @@ public class NavigationFullScreen extends Fragment implements View.OnClickListen
                 String email = editEmailEdt.getText().toString();
                 if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("user_id", ReadSharePrefrence(getActivity(), USERID));
+                    hashMap.put("uid", ReadSharePrefrence(getActivity(), USERID));
                     hashMap.put("email", editEmailEdt.getText().toString());
-
 
                     pd = new Dialog(getActivity());
                     pd.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -257,7 +256,7 @@ public class NavigationFullScreen extends Fragment implements View.OnClickListen
 
                 if (newPwd.length() > 2 && newPwd.equals(reNewPwd)) {
                     HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("user_id", ReadSharePrefrence(getActivity(), USERID));
+                    hashMap.put("uid", ReadSharePrefrence(getActivity(), USERID));
                     hashMap.put("oldpass", oldPwd);
                     hashMap.put("newpass", newPwd);
 
@@ -312,7 +311,7 @@ public class NavigationFullScreen extends Fragment implements View.OnClickListen
 
                 if (addressLine1.length() > 1 && addressLine2.length() > 1 && zipCode.length() > 1 && mobileNo.length() > 1) {
                     HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("user_id", ReadSharePrefrence(getActivity(), USERID));
+                    hashMap.put("uid", ReadSharePrefrence(getActivity(), USERID));
                     hashMap.put("address_line_1", addressLine1);
                     hashMap.put("address_line_2", addressLine2);
                     hashMap.put("phone", mobileNo);
